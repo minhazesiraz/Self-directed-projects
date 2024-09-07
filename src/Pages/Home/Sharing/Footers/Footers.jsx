@@ -17,7 +17,7 @@ const Footers = () => {
                            aria-label="WindUI logo"
                            aria-current="page"
                            className="mb-6 flex items-center gap-2 whitespace-nowrap text-base font-medium leading-6 text-slate-700 focus:outline-none"
-                           href="javascript:void(0)"
+                           href=""
                         >
                            <svg
                               width="300"
@@ -61,7 +61,7 @@ const Footers = () => {
                         <ul>
                            <li className="mb-2 leading-6">
                               <a
-                                 href="javascript:void(0)"
+                                 href=""
                                  className="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"
                               >
                                  Features
@@ -69,7 +69,7 @@ const Footers = () => {
                            </li>
                            <li className="mb-2 leading-6">
                               <a
-                                 href="javascript:void(0)"
+                                 href=""
                                  className="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"
                               >
                                  Customers
@@ -77,7 +77,7 @@ const Footers = () => {
                            </li>
                            <li className="mb-2 leading-6">
                               <a
-                                 href="javascript:void(0)"
+                                 href=""
                                  className="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"
                               >
                                  Why us?
@@ -85,7 +85,7 @@ const Footers = () => {
                            </li>
                            <li className="mb-2 leading-6">
                               <a
-                                 href="javascript:void(0)"
+                                 href=""
                                  className="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"
                               >
                                  Pricing
@@ -106,7 +106,7 @@ const Footers = () => {
                         <ul>
                            <li className="mb-2 leading-6">
                               <a
-                                 href="javascript:void(0)"
+                                 href=""
                                  className="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"
                               >
                                  Documentation
@@ -114,7 +114,7 @@ const Footers = () => {
                            </li>
                            <li className="mb-2 leading-6">
                               <a
-                                 href="javascript:void(0)"
+                                 href=""
                                  className="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"
                               >
                                  Training
@@ -122,7 +122,7 @@ const Footers = () => {
                            </li>
                            <li className="mb-2 leading-6">
                               <a
-                                 href="javascript:void(0)"
+                                 href=""
                                  className="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"
                               >
                                  System status
@@ -130,7 +130,7 @@ const Footers = () => {
                            </li>
                            <li className="mb-2 leading-6">
                               <a
-                                 href="javascript:void(0)"
+                                 href=""
                                  className="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"
                               >
                                  FAQ&apos;s
@@ -138,7 +138,7 @@ const Footers = () => {
                            </li>
                            <li className="mb-2 leading-6">
                               <a
-                                 href="javascript:void(0)"
+                                 href=""
                                  className="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"
                               >
                                  Help Center
@@ -159,7 +159,7 @@ const Footers = () => {
                         <ul>
                            <li className="mb-2 leading-6">
                               <a
-                                 href="javascript:void(0)"
+                                 href=""
                                  className="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"
                               >
                                  About us
@@ -167,7 +167,7 @@ const Footers = () => {
                            </li>
                            <li className="mb-2 leading-6">
                               <a
-                                 href="javascript:void(0)"
+                                 href=""
                                  className="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"
                               >
                                  Careers
@@ -175,7 +175,7 @@ const Footers = () => {
                            </li>
                            <li className="mb-2 leading-6">
                               <a
-                                 href="javascript:void(0)"
+                                 href=""
                                  className="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"
                               >
                                  Leadership
@@ -183,7 +183,7 @@ const Footers = () => {
                            </li>
                            <li className="mb-2 leading-6">
                               <a
-                                 href="javascript:void(0)"
+                                 href=""
                                  className="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"
                               >
                                  Blog
@@ -191,7 +191,7 @@ const Footers = () => {
                            </li>
                            <li className="mb-2 leading-6">
                               <a
-                                 href="javascript:void(0)"
+                                 href=""
                                  className="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"
                               >
                                  Events
@@ -212,7 +212,7 @@ const Footers = () => {
                         <ul>
                            <li className="mb-2 leading-6">
                               <a
-                                 href="javascript:void(0)"
+                                 href=""
                                  className="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"
                               >
                                  Contact
@@ -220,7 +220,7 @@ const Footers = () => {
                            </li>
                            <li className="mb-2 leading-6">
                               <a
-                                 href="javascript:void(0)"
+                                 href=""
                                  className="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"
                               >
                                  Support
@@ -228,7 +228,7 @@ const Footers = () => {
                            </li>
                            <li className="mb-2 leading-6">
                               <a
-                                 href="javascript:void(0)"
+                                 href=""
                                  className="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"
                               >
                                  Partners
@@ -236,7 +236,7 @@ const Footers = () => {
                            </li>
                            <li className="mb-2 leading-6">
                               <a
-                                 href="javascript:void(0)"
+                                 href=""
                                  className="transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600"
                               >
                                  Join research
