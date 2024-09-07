@@ -1,0 +1,10 @@
+/* Define initial state for controls */
+.controls-hidden {
+   opacity: 0;
+   transition: opacity 0.3s ease;
+}
+
+/* Show controls on hover */
+.glide-03:hover .controls-hidden {
+   opacity: 1;
+}
