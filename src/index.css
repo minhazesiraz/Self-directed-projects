@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+
+/* donors */
+body.light,
+body.default-light {
+   background-color: #fff;
+   color: #1f2937;
+   transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark,
+body.default-dark {
+   background-color: #0f172a;
+   color: #94a3b8;
+   transition: background-color 0.3s, color 0.3s;
+}
+
+body.orange {
+   background-color: #fff7ed;
+   color: #1f2937;
+   transition: background-color 0.3s, color 0.3s;
+}
