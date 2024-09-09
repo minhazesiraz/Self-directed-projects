@@ -1,0 +1,13 @@
+#navbar a.active {
+   color: #0ea5e9;
+   text-decoration: underline;
+   text-decoration-color: #0ea5e9;
+   text-decoration-thickness: 0.125rem;
+}
+
+#navbar a:hover {
+   color: #0ea5e9;
+   text-decoration: underline;
+   text-decoration-color: #0ea5e9;
+   text-decoration-thickness: 0.125rem;
+}

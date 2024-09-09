@@ -4,7 +4,7 @@ import { FaFacebook, FaGithub, FaGoogle, FaMicrosoft, FaRegEye, FaRegEyeSlash } 
 import { Link } from "react-router-dom";
 import useOAuth from "../../Hooks/useOAuth";
 import useThemes from "../../Hooks/useThemes";
-
+import "./CreateAccount.css";
 
 const CreateAccount = () => {
    const { theme } = useThemes();

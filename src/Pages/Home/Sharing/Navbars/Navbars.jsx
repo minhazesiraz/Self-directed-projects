@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { FaCartPlus, FaRegUser } from "react-icons/fa";
+import { Link, NavLink } from "react-router-dom";
+import useOAuth from "../../../../Hooks/useOAuth";
 import useThemes from "../../../../Hooks/useThemes";
+import Avatars from "../Avatars/Avatars";
+import "./Navbars.css";
 
 const Navbars = () => {
    const [isToggleOpen, setIsToggleOpen] = useState(false);
    const [isScrolled, setIsScrolled] = useState(false);
    const { theme } = useThemes();
+   const { user } = useOAuth();
 
    useEffect(() => {
       const handleScroll = () => {
@@ -118,8 +123,13 @@ const Navbars = () => {
                         }
                      </ul>
                      <div className="ml-auto flex items-center px-6 lg:ml-0 lg:p-0">
+                        {/*        <!-- Carts --> */}
+                        <span className="inline-flex items-center cursor-pointer justify-center gap-1 rounded ring-1 ring-sky-500 ring-offset-1 p-1 text-lg mr-3 h-10">
+                           <FaCartPlus />
+                           10<span className="sr-only"> new emails</span>
+                        </span>
                         {/*        <!-- Avatar --> */}
-                        <a
+                        {/* <a
                            href="#"
                            className="relative inline-flex h-10 w-10 items-center justify-center rounded-full text-white"
                         >
@@ -134,7 +144,19 @@ const Navbars = () => {
                            <span className="absolute bottom-0 right-0 inline-flex items-center justify-center gap-1 rounded-full border-2 border-white bg-pink-500 p-1 text-sm text-white">
                               <span className="sr-only"> 7 new emails </span>
                            </span>
-                        </a>
+                        </a> */}
+                        {
+                           user ? <>
+                              {/* dropdowns */}
+                              <Avatars />
+                           </>
+                              :
+                              <Link to="/log-in">
+                                 <button className="flex items-center gap-2 rounded h-10 ring-2 ring-inherit ring-offset-1 p-1 text-lg">
+                                    <FaRegUser /> Log in
+                                 </button>
+                              </Link>
+                        }
                         {/*        <!-- End Avatar --> */}
                      </div>
                   </nav>

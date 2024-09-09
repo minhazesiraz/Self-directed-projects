@@ -1,8 +1,11 @@
 import glide from "@glidejs/glide";
 import { useEffect } from "react";
+import useThemes from "../../../../Hooks/useThemes";
 import "./Sliders.css";
 
 const Sliders = () => {
+   const { theme } = useThemes();
+
    useEffect(() => {
       const slider = new glide(".glide-03", {
          type: "slider",
@@ -52,9 +55,12 @@ const Sliders = () => {
       },
    ]
 
-    return (
-        <>
-            <div className="py-16">
+   return (
+      <>
+         <div
+            // className="py-16"
+            className={`py-16 ${(theme === 'dark' || theme === 'default-dark') ? 'bg-gradient-to-bl from-purple-400 via-purple-50 to-transparent' : ''} ${(theme === 'light' || theme === 'default-light') ? 'bg-gradient-to-bl from-purple-400 via-purple-50 to-transparent' : ''} ${theme === 'warm' ? 'bg-gradient-to-bl from-purple-400 via-purple-50 to-transparent' : ''}`}
+         >
             <div className="relative w-full glide-03">
                {/*    <!-- Slides --> */}
                <div className="overflow-hidden" data-glide-el="track">
@@ -156,8 +162,8 @@ const Sliders = () => {
                </div>
             </div>
          </div>
-        </>
-    );
+      </>
+   );
 };
 
 export default Sliders;

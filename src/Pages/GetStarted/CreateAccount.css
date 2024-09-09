@@ -1,0 +1,14 @@
+input:-webkit-autofill+label::before {
+   background: #1e293b00;
+   /* bg-slate-800 color */
+   border-radius: 0.375rem;
+   /* Matching rounded corners */
+   /* border: 0.125rem solid #1e293b; */
+}
+
+input:-webkit-autofill {
+   background: white !important;
+   /* Ensures autofill background color */
+   color: #1e293b !important;
+   /* Optional: text color change */
+}
