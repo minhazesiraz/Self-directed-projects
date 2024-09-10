@@ -9,6 +9,7 @@ import "./Navbars.css";
 const Navbars = () => {
    const [isToggleOpen, setIsToggleOpen] = useState(false);
    const [isScrolled, setIsScrolled] = useState(false);
+   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
    const { theme } = useThemes();
    const { user } = useOAuth();
 
@@ -40,12 +41,21 @@ const Navbars = () => {
          path: '/planning',
       },
       {
-         epithet: 'About Us',
-         path: '/about-us',
+         epithet: 'Services',
+         children: [
+            { epithet: 'Web Pages', path: '/services/web-pages' },
+            { epithet: 'Digital Products', path: '/services/digital-products' },
+            { epithet: 'Digital Marketing', path: '/services/digital-marketing' },
+            { epithet: 'SEO Services', path: '/services/Search-Engine-Optimization' }
+         ]
       },
       {
          epithet: 'Contact Us',
          path: '/contact-us',
+      },
+      {
+         epithet: 'Store',
+         path: '/digital-offerings',
       }
    ]
 
@@ -107,7 +117,7 @@ const Navbars = () => {
                            : "invisible opacity-0"
                            }`}
                      >
-                        {
+                        {/* {
                            navLinks.map((job, i) => (
                               <li key={i} role="none" className="flex items-stretch">
                                  <NavLink
@@ -118,6 +128,40 @@ const Navbars = () => {
                                  >
                                     <span>{job.epithet}</span>
                                  </NavLink>
+                              </li>
+                           ))
+                        } */}
+                        {
+                           navLinks.map((job, i) => (
+                              <li key={i} className="relative flex items-stretch">
+                                 {job.children ? (
+                                    // Dropdown Menu
+                                    <div
+                                       onMouseEnter={() => setIsDropdownOpen(true)}
+                                       onMouseLeave={() => setIsDropdownOpen(false)}
+                                       className="relative"
+                                    >
+                                       <button className="flex items-center gap-2 py-4 hover:text-emerald-500">
+                                          {job.epithet}
+                                       </button>
+                                       {isDropdownOpen && (
+                                          <ul className="absolute -mt-[2.5px] top-full left-0 bg-white shadow-lg rounded py-2 z-50 w-40 overflow-auto">
+                                             {job.children.map((subItem, i) => (
+                                                <li key={i} className="px-4 py-2 hover:bg-gray-100">
+                                                   <NavLink to={subItem.path}>{subItem.epithet}</NavLink>
+                                                </li>
+                                             ))}
+                                          </ul>
+                                       )}
+                                    </div>
+                                 ) : (
+                                    <NavLink to={job.path}
+                                       // className="flex items-center gap-2 py-4 hover:text-emerald-500"
+                                       className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-8"
+                                    >
+                                       {job.epithet}
+                                    </NavLink>
+                                 )}
                               </li>
                            ))
                         }

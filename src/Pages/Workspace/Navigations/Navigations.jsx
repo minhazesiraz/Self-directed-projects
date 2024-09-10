@@ -1,43 +1,43 @@
-import { useEffect, useRef, useState } from "react";
+import PropTypes from "prop-types";
+import { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
-
-const Navigations = () => {
-   const [isSideNavOpen, setIsSideNavOpen] = useState(false);
-   const toggleNav = () => setIsSideNavOpen(!isSideNavOpen);
-
-   const nodeRef = useRef()
+const Navigations = ({ isNavOpen, toggleNav }) => {
+   const nodeRef = useRef(null);
 
    useEffect(() => {
-      const handleOutsideClick = e => {
-         if (!nodeRef.current.contains(e.target)) {
-            toggleNav()
+      const handleOutsideClick = (e) => {
+         // Check if the click is outside of the navigation
+         if (nodeRef.current && !nodeRef.current.contains(e.target)) {
+            toggleNav(false);  // Close the nav
          }
+      };
+
+      if (isNavOpen) {
+         document.addEventListener("mousedown", handleOutsideClick);
+      } else {
+         document.removeEventListener("mousedown", handleOutsideClick);
       }
-      if (isSideNavOpen) {
-         document.addEventListener("mousedown", handleOutsideClick)
-      }
+
       return () => {
-         document.removeEventListener("mousedown", handleOutsideClick)
-      }
-   }, [isSideNavOpen])
+         document.removeEventListener("mousedown", handleOutsideClick);
+      };
+   }, [isNavOpen, toggleNav]);
 
    return (
       <>
-         {/*  <!-- Component: Side navigation menu with user profile and alert message --> */}
-         {/*  <!-- Mobile trigger --> */}
          <button
             title="Side navigation"
             type="button"
-            className={`visible fixed left-6 top-6 z-40 order-10 block h-10 w-10 self-center rounded bg-white opacity-100 lg:hidden ${isSideNavOpen
-               ? "visible opacity-100 [&_span:nth-child(1)]:w-6 [&_span:nth-child(1)]:translate-y-0 [&_span:nth-child(1)]:rotate-45 [&_span:nth-child(3)]:w-0 [&_span:nth-child(2)]:-rotate-45 "
-               : ""
+            className={`visible fixed left-6 top-6 z-40 order-10 block h-10 w-10 self-center rounded bg-white opacity-100 lg:hidden ${isNavOpen ? "visible opacity-100 [&_span:nth-child(1)]:w-6 [&_span:nth-child(1)]:translate-y-0 [&_span:nth-child(1)]:rotate-45 [&_span:nth-child(3)]:w-0 [&_span:nth-child(2)]:-rotate-45" : ""
                }`}
             aria-haspopup="menu"
             aria-label="Side navigation"
-            aria-expanded={isSideNavOpen ? " true" : "false"}
+            aria-expanded={isNavOpen ? "true" : "false"}
             aria-controls="nav-menu-4"
-            onClick={() => setIsSideNavOpen(!isSideNavOpen)}
+            onClick={() => toggleNav(!isNavOpen)}
          >
+            {/* Hamburger Menu */}
             <div className="absolute top-1/2 left-1/2 w-6 -translate-x-1/2 -translate-y-1/2 transform">
                <span
                   aria-hidden="true"
@@ -54,12 +54,14 @@ const Navigations = () => {
             </div>
          </button>
 
-         {/*  <!-- Side Navigation --> */}
+         {/* Side Navigation */}
          <aside
+            ref={nodeRef}
             id="nav-menu-4"
             aria-label="Side navigation"
-            className={`fixed top-0 bottom-0 left-0 z-40 flex w-72 flex-col border-r border-r-slate-200 bg-white transition-transform lg:translate-x-0 ${isSideNavOpen ? "translate-x-0" : " -translate-x-full"
+            className={`fixed top-0 bottom-0 left-0 z-40 flex w-72 flex-col border-r border-r-slate-200 bg-white transition-transform lg:translate-x-0 ${isNavOpen ? "translate-x-0" : " -translate-x-full"
                }`}
+            onClick={() => toggleNav(!isNavOpen)}
          >
             <div className="flex flex-col items-center gap-4 border-b border-slate-200 p-6">
                <div className="shrink-0">
@@ -96,8 +98,8 @@ const Navigations = () => {
                <div>
                   <ul className="flex flex-1 flex-col gap-1 py-3">
                      <li className="px-3">
-                        <a
-                           href="#"
+                        <Link
+                           to={"/workspace/users"}
                            className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-emerald-50 hover:text-emerald-500 focus:bg-emerald-50 aria-[current=page]:bg-emerald-50 aria-[current=page]:text-emerald-500 "
                         >
                            <div className="flex items-center self-center">
@@ -121,7 +123,7 @@ const Navigations = () => {
                            <div className="flex w-full flex-1 flex-col items-start justify-center gap-0 overflow-hidden truncate text-sm">
                               Dashboard
                            </div>
-                        </a>
+                        </Link>
                      </li>
                      <li className="px-3">
                         <a
@@ -337,23 +339,8 @@ const Navigations = () => {
                   </ul>
                </div>
             </nav>
-            <div className="p-3">
-               <div
-                  className="w-full rounded border border-cyan-100 bg-cyan-50 px-4 py-3 text-sm text-cyan-500"
-                  role="alert"
-               >
-                  <h3 className="mb-2 font-semibold">Backup completed.</h3>
-                  <p>
-                     You successfully read this important alert message. Blue often
-                     indicates a neutral informative change or action.{" "}
-                  </p>
-               </div>
-            </div>
             <footer className="border-t border-slate-200 p-3">
-               <a
-                  href="#"
-                  className="flex items-center gap-3 rounded p-3 text-slate-900 transition-colors hover:text-emerald-500 "
-               >
+               <a href="#" className="flex items-center gap-3 rounded p-3 text-slate-900 transition-colors hover:text-emerald-500 ">
                   <div className="flex items-center self-center ">
                      <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -379,15 +366,19 @@ const Navigations = () => {
             </footer>
          </aside>
 
-         {/*  <!-- Backdrop --> */}
+         {/* Backdrop */}
          <div
-            className={`fixed top-0 bottom-0 left-0 right-0 z-30 bg-slate-900/20 transition-colors sm:hidden ${isSideNavOpen ? "block" : "hidden"
+            className={`fixed top-0 bottom-0 left-0 right-0 z-30 bg-slate-900/20 transition-colors sm:hidden ${isNavOpen ? "block" : "hidden"
                }`}
-            onClick={() => setIsSideNavOpen(false)}
+            onClick={() => toggleNav(false)}
          ></div>
-         {/*  <!-- End Side navigation menu with user profile and alert message --> */}
       </>
    );
+};
+
+Navigations.propTypes = {
+   isNavOpen: PropTypes.bool.isRequired,
+   toggleNav: PropTypes.func.isRequired,
 };
 
 export default Navigations;
