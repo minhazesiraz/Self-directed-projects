@@ -2,14 +2,16 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaFacebook, FaGithub, FaGoogle, FaMicrosoft, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import useEncoded from "../../Hooks/useEncoded";
 import useOAuth from "../../Hooks/useOAuth";
 import useThemes from "../../Hooks/useThemes";
 import "./CreateAccount.css";
 
 const CreateAccount = () => {
    const { theme } = useThemes();
-   const { createUser } = useOAuth();
+   const { createUser, updateUserProfile } = useOAuth();
    const [showPassword, setShowPassword] = useState(false);
+   const encoded = useEncoded();
 
    const { register, handleSubmit, formState: { isValid } } = useForm({ mode: "onChange" });
 
@@ -27,27 +29,27 @@ const CreateAccount = () => {
             console.log(user);
             console.log(user.metadata.creationTime);
 
-            // updateUserProfile(name).then(() => {
-            //    // Profile updated!
+            // To update a user profile in both Firebase and MongoDB
+            updateUserProfile(name).then(() => {
 
-            //    const userDetails = {
-            //       name: name,
-            //       email: email,
-            //       lastSignInTime: user.metadata.lastSignInTime,
-            //       creationTime: user.metadata.creationTime
-            //    }
+               const userDetails = {
+                  name: name,
+                  email: email,
+                  lastSignInTime: user.metadata.lastSignInTime,
+                  creationTime: user.metadata.creationTime
+               }
 
-            //    decrypted.post("/users", userDetails).then((res) => {
-            //       if (res.data.insertedId) {
-            //          console.log("User profile info updated.")
-            //       }
-            //    }).catch((error) => {
-            //       console.log(error);
-            //    })
+               encoded.post("/APIs/users", userDetails).then((res) => {
+                  if (res.data.insertedId) {
+                     console.log("User profile updated successfully.")
+                  }
+               }).catch((error) => {
+                  console.log(error);
+               })
 
-            // }).catch((error) => {
-            //    console.log(error);
-            // });
+            }).catch((error) => {
+               console.log(error);
+            });
          })
          .catch((error) => {
             const errorCode = error.code;

@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layouts/Main";
+import Workspace from "../Layouts/Workspace";
 import LogOn from "../Pages/EnterCredentials/LogOn";
 import CreateAccount from "../Pages/GetStarted/CreateAccount";
 import Home from "../Pages/Home/Home/Home";
@@ -23,4 +24,13 @@ export const router = createBrowserRouter([
          }
       ]
    },
+   {
+      path: "/workspace",
+      element: <Workspace />,
+      children: [
+         {
+            path: "Users"
+         }
+      ]
+   }
 ]);

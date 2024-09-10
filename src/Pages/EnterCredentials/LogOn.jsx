@@ -40,7 +40,7 @@ const LogOn = () => {
 
                   <div className="flex flex-col gap-y-2">
                      <span className="text-2xl">Log in to your account</span>
-                     <strong>Don&apos;t have an account? <Link to="/sign-up" className="text-green-400">Sign Up</Link></strong>
+                     <strong>Don&apos;t have an account? <Link to="/create-an-account" className="text-green-400">Sign Up</Link></strong>
                      <div className="flex flex-col gap-y-2">
                         <button className="flex items-center border border-slate-400 rounded py-1 pr-1 ps-4 w-full hover:shadow-md hover:shadow-slate-500">
                            <FaGoogle />
