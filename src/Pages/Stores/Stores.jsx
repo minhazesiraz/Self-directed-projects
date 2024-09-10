@@ -1,27 +1,30 @@
 import { useQuery } from "@tanstack/react-query";
+import { Link } from "react-router-dom";
 import useEncoded from "../../Hooks/useEncoded";
+import "./Stores.css";
 
-const Store = () => {
+const Stores = () => {
    const encoded = useEncoded();
 
-   const { data: stores = [], isLoading, isError, error } = useQuery({
-      queryKey: ["stores"],
+   const { data: digital_offerings = [], isLoading, isError, error } = useQuery({
+      queryKey: ["digital_offerings"],
       queryFn: async () => {
-         const res = await encoded.get("APIs/stores");
+         const res = await encoded.get("APIs/digital-offerings");
          return res.data;
       }
    });
+   console.log(digital_offerings);
 
    if (isLoading) return <p>Loading...</p>;
    if (isError) return <p>Error: {error.message}</p>;
 
    return (
-      <div className="space-y-4 grid grid-cols-4 gap-3 my-20">
-         {stores.length > 0 ? (
-            stores.map((store) => (
+      <div className="grid grid-cols-4 gap-3 my-20">
+         {digital_offerings.length > 0 ? (
+            digital_offerings.map((store) => (
                <div
                   key={store.id}
-                  className="overflow-hidden rounded bg-white text-slate-500 shadow-md shadow-slate-200"
+                  className="effect-image-1 overflow-hidden rounded bg-white text-slate-500 relative"
                >
                   {/*  <!-- Image --> */}
                   <figure>
@@ -30,6 +33,12 @@ const Store = () => {
                         alt={store.name || "card image"}
                         className="aspect-video w-full"
                      />
+                     <div className="overlay">
+                        <div className="overlay-content">
+                           <span>Special Offer!</span> <br />
+                           <Link to={`/digital-offerings/${store._id}`}>Detail</Link>
+                        </div>
+                     </div>
                   </figure>
                   {/*  <!-- Body--> */}
                   <div className="p-6">
@@ -37,7 +46,7 @@ const Store = () => {
                         <h3 className="text-xl font-medium text-slate-700">
                            {store.name || "Default Name"}
                         </h3>
-                        <p className="text-slate-400">${store.price || "0.00"}</p>
+                        <p className="text-slate-400">৳{store.price || "0.00"}</p>
                      </header>
                      <p>{store.description || "Default Description"}</p>
                   </div>
@@ -56,4 +65,4 @@ const Store = () => {
    );
 };
 
-export default Store;
+export default Stores;
