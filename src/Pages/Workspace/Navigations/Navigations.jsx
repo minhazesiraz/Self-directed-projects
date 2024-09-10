@@ -1,8 +1,25 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 
 const Navigations = () => {
-   const [isSideNavOpen, setIsSideNavOpen] = useState(false)
+   const [isSideNavOpen, setIsSideNavOpen] = useState(false);
+   const toggleNav = () => setIsSideNavOpen(!isSideNavOpen);
+
+   const nodeRef = useRef()
+
+   useEffect(() => {
+      const handleOutsideClick = e => {
+         if (!nodeRef.current.contains(e.target)) {
+            toggleNav()
+         }
+      }
+      if (isSideNavOpen) {
+         document.addEventListener("mousedown", handleOutsideClick)
+      }
+      return () => {
+         document.removeEventListener("mousedown", handleOutsideClick)
+      }
+   }, [isSideNavOpen])
 
    return (
       <>
@@ -12,8 +29,8 @@ const Navigations = () => {
             title="Side navigation"
             type="button"
             className={`visible fixed left-6 top-6 z-40 order-10 block h-10 w-10 self-center rounded bg-white opacity-100 lg:hidden ${isSideNavOpen
-                  ? "visible opacity-100 [&_span:nth-child(1)]:w-6 [&_span:nth-child(1)]:translate-y-0 [&_span:nth-child(1)]:rotate-45 [&_span:nth-child(3)]:w-0 [&_span:nth-child(2)]:-rotate-45 "
-                  : ""
+               ? "visible opacity-100 [&_span:nth-child(1)]:w-6 [&_span:nth-child(1)]:translate-y-0 [&_span:nth-child(1)]:rotate-45 [&_span:nth-child(3)]:w-0 [&_span:nth-child(2)]:-rotate-45 "
+               : ""
                }`}
             aria-haspopup="menu"
             aria-label="Side navigation"
