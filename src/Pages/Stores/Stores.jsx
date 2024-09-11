@@ -23,7 +23,7 @@ const Stores = () => {
          {digital_offerings.length > 0 ? (
             digital_offerings.map((store) => (
                <div
-                  key={store.id}
+                  key={store._id}
                   className="effect-image-1 overflow-hidden rounded bg-white text-slate-500 relative"
                >
                   {/*  <!-- Image --> */}

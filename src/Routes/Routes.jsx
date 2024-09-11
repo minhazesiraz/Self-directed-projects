@@ -9,6 +9,7 @@ import Store from "../Pages/Stores/Stores";
 import Web from "../Pages/Web/Web";
 import Roles from "../Pages/Workspace/Roles/Roles";
 import Users from "../Pages/Workspace/Users/Users";
+import YourCarts from "../Pages/Workspace/YourCarts/YourCarts";
 
 export const router = createBrowserRouter([
    {
@@ -54,6 +55,10 @@ export const router = createBrowserRouter([
             path: "users/:uid",
             element: <Roles />,
             loader: ({ params }) => fetch(`http://localhost:5000/APIs/users/${params.uid}`)
+         },
+         {
+            path: "your-carts",
+            element: <YourCarts />
          }
       ]
    }
