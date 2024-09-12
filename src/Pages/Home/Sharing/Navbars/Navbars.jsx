@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { FaCartPlus, FaRegUser } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
+import useCarts from "../../../../Hooks/useCarts";
 import useOAuth from "../../../../Hooks/useOAuth";
 import useThemes from "../../../../Hooks/useThemes";
 import Avatars from "../Avatars/Avatars";
@@ -12,6 +13,7 @@ const Navbars = () => {
    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
    const { theme } = useThemes();
    const { user } = useOAuth();
+   const [carts] = useCarts();
 
    useEffect(() => {
       const handleScroll = () => {
@@ -170,7 +172,8 @@ const Navbars = () => {
                         {/*        <!-- Carts --> */}
                         <span className="inline-flex items-center cursor-pointer justify-center gap-1 rounded ring-1 ring-sky-500 ring-offset-1 p-1 text-lg mr-3 h-10">
                            <FaCartPlus />
-                           10<span className="sr-only"> new emails</span>
+                           {carts.length}
+                           <span className="sr-only"> new emails</span>
                         </span>
                         {/*        <!-- Avatar --> */}
                         {/* <a
