@@ -42,12 +42,14 @@ const CheckoutForm = () => {
          // });
 
          const doc = {
-
+            paymentId: paymentIntent.id,
+            amount: paymentIntent.amount,
+            status: paymentIntent.status,
          }
 
-         const response = decoded.post('/payments', { doc: doc })
+         const response = await decoded.post('/APIs/payments', { doc: doc })
 
-         if (response.ok) {
+         if (response.status === 200) {
             setMessage('Payment succeeded and data stored successfully!');
          } else {
             setMessage('Payment succeeded but failed to store data.');

@@ -8,6 +8,7 @@ import Home from "../Pages/Home/Home/Home";
 import Store from "../Pages/Stores/Stores";
 import Web from "../Pages/Web/Web";
 import Roles from "../Pages/Workspace/Roles/Roles";
+import PayWithStripe from "../Pages/Workspace/Stripe/PayWithStripe";
 import Users from "../Pages/Workspace/Users/Users";
 import YourCarts from "../Pages/Workspace/YourCarts/YourCarts";
 
@@ -59,6 +60,10 @@ export const router = createBrowserRouter([
          {
             path: "your-carts",
             element: <YourCarts />
+         },
+         {
+            path: "create-payment",
+            element: <PayWithStripe />
          }
       ]
    }

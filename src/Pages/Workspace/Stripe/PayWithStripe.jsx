@@ -31,7 +31,7 @@ const PayWithStripe = () => {
 
    useEffect(() => {
       if (totalCoins > 0) {
-         decoded.post('/create-payment-intent', { coins: totalCoins, payment_method_types: ['card'] })
+         decoded.post('/APIs/create-payment-intent', { coins: totalCoins, payment_method_types: ['card'] })
             .then((result) => {
                setClientSecret(result.data.clientSecret);
                console.log(result.data.clientSecret);
